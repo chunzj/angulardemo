@@ -16,9 +16,7 @@ app.controller('PlayerController', ['$scope', '$http', function ($scope, $http) 
   $scope.play = function(program) {
     if ($scope.playing) $scope.audio.pause();
 
-    if (!program) {
-      $scope.audio.src = $scope.curMp3File;
-    } else {
+    if (program) {
       var url = program.audio[0].format.mp4.$text;
       $scope.curMp3File = url;
       $scope.audio.src = url;
@@ -45,10 +43,14 @@ app.controller('PlayerController', ['$scope', '$http', function ($scope, $http) 
   }
 
   loadData($scope, $http);
+
+  $scope.$emit('lalala', {name:'chunzj'});
 }]);
 
 app.controller('RelatedController', ['$scope', function ($scope) {
-
+  $scope.on('lalala', function (data) {
+    console.log('%%%%%%%%%%%%%%%%%', data);
+  });
 }]);
 
 function loadData($scope, $http) {
@@ -62,3 +64,30 @@ function loadData($scope, $http) {
     console.log(arguments);
   });
 }
+
+app.directive('nprLink', function() {
+  return {
+    restrict: 'EA',
+    require: ['^ngModel'],
+    replace: true,
+    scope: {
+      ngModel: '=',
+      play: '&'
+    },
+    templateUrl: './views/nprListItem.html',
+    link: function(scope, ele, attr) {
+      console.log(scope);
+      scope.duration = scope.ngModel.audio[0].duration.$text;
+      console.log(attr.width + ' = ' + attr.height);
+    }
+  }
+});
+
+app.directive('hello', function () {
+  return {
+    template: '<div>Hi there <span ng-transclude></span><span ng-transclude></span><span>haha</span></div>',
+    transclude: true
+  };
+});
+
+console.log($('#programs_list'));
