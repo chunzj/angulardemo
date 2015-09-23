@@ -108,3 +108,14 @@ bookListModule.controller('BookListCtrl', function ($scope, $http, $state, $stat
     filterOptions: $scope.filterOptions
   };
 });
+
+/**
+ * Êé¼®ÏêÇéÄ£¿é
+ *
+ * @type {module}
+ */
+var bookDetailModule = angular.module('BookDetailModule', []);
+bookDetailModule.controller('BookDetailCtrl', function ($scope, $http, $state, $stateParams) {
+  console.log($stateParams);
+  //to do
+});

@@ -2,7 +2,7 @@
  * Created by ChunZuJun on 2015/9/23.
  *
  */
-var routerApp = angular.module('routerApp', ['ui.router', 'ngGrid', 'BookListModule']);
+var routerApp = angular.module('routerApp', ['ui.router', 'ngGrid', 'BookListModule', 'BookDetailModule']);
 
 routerApp.run(function ($rootScope, $state, $stateParams) {
   $rootScope.$state = $state;
