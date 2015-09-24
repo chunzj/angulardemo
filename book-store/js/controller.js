@@ -6,7 +6,7 @@ var bookListModule = angular.module('BookListModule', []);
 
 bookListModule.controller('BookListCtrl', function ($scope, $http, $state, $stateParams) {
   $scope.filterOptions = {
-    filterText: '',
+    filterText: '44',
     useExternalFilter: true
   };
   $scope.totalServerItems = 0;
@@ -23,14 +23,13 @@ bookListModule.controller('BookListCtrl', function ($scope, $http, $state, $stat
       $scope.$apply();
     }
   };
-  //’‚¿Ôø…“‘∏˘æ›¬∑”……œ¥´µ›π˝¿¥µƒbookType≤Œ ˝º”‘ÿ≤ªÕ¨µƒ ˝æ›
   console.log($stateParams);
   $scope.getPagedDataAsync = function (pageSize, page, searchText) {
     setTimeout(function () {
       var data;
       if (searchText) {
         var ft = searchText.toLowerCase();
-        $http.get('../data/books' + $stateParams.bookType + '.json').
+        $http.get('data/book' + $stateParams.bookType + '.json').
           success(function(largeLoad) {
               data = largeLoad.filter(function (item) {
                 return JSON.stringify(item).toLowerCase().indexOf(ft);
@@ -38,7 +37,7 @@ bookListModule.controller('BookListCtrl', function ($scope, $http, $state, $stat
               $scope.setPagingData(data, page, pageSize);
             });
       } else {
-        $http.get('../data/books' + $stateParams.bookType + '.json').
+        $http.get('data/book' + $stateParams.bookType + '.json').
           success(function (largeLoad) {
                 $scope.setPagingData(largeLoad, page, pageSize);
             });
@@ -47,7 +46,8 @@ bookListModule.controller('BookListCtrl', function ($scope, $http, $state, $stat
   };
   $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
   $scope.$watch('pagingOptions', function (newVal, oldVal) {
-    if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
+    if (newVal !== oldVal && (newVal.currentPage !== oldVal.currentPage ||
+      newVal.pageSize !== oldVal.pageSize)) {
       $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
     }
   }, true);
@@ -66,43 +66,44 @@ bookListModule.controller('BookListCtrl', function ($scope, $http, $state, $stat
     enableCellSelection: true,
     enableRowSelection: false,
     enableCellEdit: true,
-    enablePinning: true, //∂•≤øπÃ∂®
+    enablePinning: true,
     columnsDefs: [{
       field: 'index',
-      displayName: '–Ú∫≈',
+      displayName: 'Â∫èÂè∑',
       width: 60,
       pinnable: false,
       sortable: false
     }, {
       field: 'name',
-      displayName: ' È√˚',
+      displayName: '‰π¶Âêç',
       enableCellEdit: true
     }, {
       field: 'author',
-      displayName: '◊˜’ﬂ',
+      displayName: '‰ΩúËÄÖ',
       enableCellEdit: true,
       width: 220
     }, {
       field: 'pubTime',
-      displayName: '≥ˆ∞Ê»’∆⁄',
+      displayName: 'Âá∫ÁâàÊó•Êúü',
       enableCellEdit: true,
       width: 120
     }, {
       field: 'price',
-      displayName: '∂®º€',
+      displayName: '‰ª∑Ê†º',
       enableCellEdit: true,
       width: 120,
-      cellFilter: 'currency: "£§"'
+      cellFilter: 'currency:"Ôø•"'
     }, {
       field: 'bookId',
-      displayName: '≤Ÿ◊˜',
+      displayName: 'Êìç‰Ωú',
       enableCellEdit: false,
       sortable: false,
       pinnable: false,
-      cellTemplate: '<div><a ui-sref="bookdetail({bookId: row.getProperty(col.field)})" id="{{row.getProperty(col.field)}}">œÍ«È</a></div>'
+      cellTemplate: '<div><a ui-sref="bookdetail({bookId: row.getProperty(col.field)})" id="{{row.getProperty(col.field)}}">ËØ¶ÊÉÖ</a></div>'
     }],
     enablePaging: true,
     showFooter: true,
+    showFilter: true,
     totalServerItems: 'totalServerItems',
     pagingOptions: $scope.pagingOptions,
     filterOptions: $scope.filterOptions
@@ -110,7 +111,6 @@ bookListModule.controller('BookListCtrl', function ($scope, $http, $state, $stat
 });
 
 /**
- *  ÈºÆœÍ«Èƒ£øÈ
  *
  * @type {module}
  */

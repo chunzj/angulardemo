@@ -22,9 +22,8 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
       }
     }
   }).state('booklist', {
-    url: '/{bookType: [0-9]{1,4}}',
+    url: '/{bookType:[0-9]{1,4}}',
     views: {
-      //当一个页面上带有多个ui-view的时候
       '': {
         templateUrl: 'tpls/bookList.html'
       },
