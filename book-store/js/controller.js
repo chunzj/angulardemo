@@ -38,7 +38,7 @@ bookListModule.controller('BookListCtrl', function ($scope, $http, $state, $stat
               $scope.setPagingData(data, page, pageSize);
             });
       } else {
-        $http.get('../data/books' + $stateParams.bookType + '.json').
+        $http.get('data/book' + $stateParams.bookType + '.json').
           success(function (largeLoad) {
                 $scope.setPagingData(largeLoad, page, pageSize);
             });
@@ -92,7 +92,7 @@ bookListModule.controller('BookListCtrl', function ($scope, $http, $state, $stat
       displayName: '¶¨¼Û',
       enableCellEdit: true,
       width: 120,
-      cellFilter: 'currency: "£¤"'
+      cellFilter: 'currency:"£¤"'
     }, {
       field: 'bookId',
       displayName: '²Ù×÷',

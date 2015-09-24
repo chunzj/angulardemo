@@ -4,12 +4,12 @@
  */
 var routerApp = angular.module('routerApp', ['ui.router', 'ngGrid', 'BookListModule', 'BookDetailModule']);
 
-routerApp.run(function ($rootScope, $state, $stateParams) {
+routerApp.run(function ($rootScope, $state, $stateParams){
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 });
 
-routerApp.config(function ($stateProvider, $urlRouterProvider) {
+routerApp.config(function ($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/index');
   $stateProvider.state('index', {
     url: '/index',
@@ -22,7 +22,7 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
       }
     }
   }).state('booklist', {
-    url: '/{bookType: [0-9]{1,4}}',
+    url: '/{bookType:[0-9]{1,4}}',
     views: {
       //当一个页面上带有多个ui-view的时候
       '': {
@@ -35,5 +35,11 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'tpls/bookGrid.html'
       }
     }
+  }).state('addbook', {
+    url: '/addbook',
+    templateUrl: 'tpls/addBookForm.html'
+  }).state('bookdetail', {
+    url: '/bookdetail/:bookId',
+    templateUrl: 'tpls/bookDetail.html'
   });
 });

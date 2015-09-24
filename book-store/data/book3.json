@@ -2,24 +2,24 @@
   {
     "bookId": "1",
     "index": "1",
-    "name": "ÓÃAngularJS¿ª·¢ÏÂÒ»´úWEBÓ¦ÓÃ",
-    "author":"´óÄ®ÇîÇï",
+    "name": "ç”¨AngularJSå¼€å‘ä¸‹ä¸€ä»£webåº”ç”¨",
+    "author":"å¤§æ¼ ç©·ç§‹",
     "pubTime":"2014-01-01",
     "price":"35"
   },
   {
     "bookId": "2",
     "index": "2",
-    "name": "Ext½­ºş",
-    "author":"´óÄ®ÇîÇï",
+    "name": "Extæ±Ÿæ¹–",
+    "author":"å¤§æ¼ ç©·ç§‹",
     "pubTime":"2014-01-01",
     "price":"35"
   },
   {
     "bookId": "3",
     "index": "3",
-    "name": "ActionScript3.0ÓÎÏ·Éè¼Æ»ù´¡(µÚ¶ş°æ)",
-    "author":"´óÄ®ÇîÇï",
+    "name": "ActionScript3.0æ¸¸æˆè®¾è®¡åŸºç¡€(ç¬¬äºŒç‰ˆ)",
+    "author":"å¤§æ¼ ç©·ç§‹",
     "pubTime":"2014-01-01",
     "price":"35"
   }
