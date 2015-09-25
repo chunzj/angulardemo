@@ -6,7 +6,7 @@
  ***********************************************/
 (function(window, $) {
   'use strict';
-// the # of rows we want to add to the top and bottom of the rendered grid rows 
+// the # of rows we want to add to the top and bottom of the rendered grid rows
   var EXCESS_ROWS = 6;
   var SCROLL_THRESHOLD = 4;
   var ASC = "asc";
@@ -1390,7 +1390,7 @@
         // the template for the column menu and filter, including the button.
         footerTemplate: undefined,
 
-        // Enables a trade off between refreshing the contents of the grid continuously while scrolling (behaviour when true) 
+        // Enables a trade off between refreshing the contents of the grid continuously while scrolling (behaviour when true)
         // and keeping the scroll bar button responsive at the expense of refreshing grid contents (behaviour when false)
         forceSyncScrolling: true,
 
@@ -1406,7 +1406,7 @@
         //Define a header row template for further customization. See github wiki for more details.
         headerRowTemplate: undefined,
 
-        /*Enables the use of jquery UI reaggable/droppable plugin. requires jqueryUI to work if enabled. 
+        /*Enables the use of jquery UI reaggable/droppable plugin. requires jqueryUI to work if enabled.
          Useful if you want drag + drop but your users insist on crappy browsers. */
         jqueryUIDraggable: false,
 
@@ -1416,7 +1416,7 @@
         //Prevent unselections when in single selection mode.
         keepLastSelected: true,
 
-        /*Maintains the column widths while resizing. 
+        /*Maintains the column widths while resizing.
          Defaults to true when using *'s or undefined widths. Can be ovverriden by setting to false.*/
         maintainColumnRatios: undefined,
 
@@ -1457,11 +1457,11 @@
         //Disable row selections by clicking on the row and only when the checkbox is clicked.
         selectWithCheckboxOnly: false,
 
-        /*Enables menu to choose which columns to display and group by. 
+        /*Enables menu to choose which columns to display and group by.
          If both showColumnMenu and showFilter are false the menu button will not display.*/
         showColumnMenu: false,
 
-        /*Enables display of the filterbox in the column menu. 
+        /*Enables display of the filterbox in the column menu.
          If both showColumnMenu and showFilter are false the menu button will not display.*/
         showFilter: false,
 
@@ -1474,7 +1474,7 @@
         //Row selection check boxes appear as the first column.
         showSelectionCheckbox: false,
 
-        /*Define a sortInfo object to specify a default sorting state. 
+        /*Define a sortInfo object to specify a default sorting state.
          You can also observe this variable to utilize server-side sorting (see useExternalSorting).
          Syntax is sortinfo: { fields: ['fieldName1',' fieldName2'], direction: 'ASC'/'asc' || 'desc'/'DESC'}*/
         sortInfo: {fields: [], columns: [], directions: [] },
@@ -1482,10 +1482,10 @@
         //Set the tab index of the Vieport.
         tabIndex: -1,
 
-        //totalServerItems: Total items are on the server. 
+        //totalServerItems: Total items are on the server.
         totalServerItems: 0,
 
-        /*Prevents the internal sorting from executing. 
+        /*Prevents the internal sorting from executing.
          The sortInfo object will be updated with the sorting information so you can handle sorting (see sortInfo)*/
         useExternalSorting: false,
 
@@ -2894,7 +2894,7 @@
       return index;
     };
 
-    // just call this func and hand it the rowItem you want to select (or de-select)    
+    // just call this func and hand it the rowItem you want to select (or de-select)
     self.setSelection = function (rowItem, isSelected) {
       if(grid.config.enableRowSelection){
         if (!isSelected) {
