@@ -5,14 +5,34 @@
   <title>基础学习</title>
 </head>
 <body>
-  <div ng-controller="myCtrl">
+  <!--常量学习-->
+  <div ng-controller="constantCtrl">
     <ul>
       <li ng-repeat="sexy in sex">
         {{sexy}}
       </li>
     </ul>
   </div>
+  <!--log学习-->
+  <div ng-controller="logCtrl">
+    log
+  </div>
+  <!--invoke another file service-->
+  <div ng-controller="invokeCtrl">
+    {{name}}
+  </div>
+
+  <div ng-controller="ngBindTemplateCtrl">
+    Salutation: <input type="text" ng-model="salutation"><br>
+    Name: <input type="text" ng-model="name"><br>
+    <pre ng-bind-template="{{salutation}} {{name}}!"></pre>
+  </div>
+
+  <input ng-copy="copied=true" ng-init="copied=false; value='copy me'" ng-model="value">
+  copied: {{copied}}
+
   <script src="lib/angular.js"></script>
+  <script src="js/common/data.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
