@@ -64,3 +64,8 @@ myApp.controller('pluralizeCtrl', function ($scope) {
   $scope.person3 = 'Rick';
   $scope.personCount = 1;
 });
+
+myApp.controller('switchCtrl', function ($scope) {
+  $scope.items = ['settings', 'home', 'other'];
+  $scope.selection = $scope.items[0];
+});
