@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>基础学习</title>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
   <!--常量学习-->
@@ -19,7 +20,7 @@
   </div>
   <!--invoke another file service-->
   <div ng-controller="invokeCtrl">
-    {{name}}
+    {{name}}, {{age}}
   </div>
 
   <div ng-controller="ngBindTemplateCtrl">
@@ -30,6 +31,51 @@
 
   <input ng-copy="copied=true" ng-init="copied=false; value='copy me'" ng-model="value">
   copied: {{copied}}
+
+  <br/>
+  <!--test ng-if -->
+  Click me: <input type="checkbox" ng-model="checked" ng-init="checked=true" /><br/>
+  Show when checked:
+  <span ng-if="checked" class="animate-if">
+    This is removed when the checkbox is unchecked.
+  </span>
+
+  <!-- ng model options -->
+  <div ng-controller="ngModelOptionsCtrl">
+    <form name="userForm">
+      Name:
+      <input type="text" name="userName"
+             ng-model="name"
+             ng-model-options="{ updateOn: 'blur', getterSetter: true}"/><br />
+    </form>
+    <pre ng-open="open" ng-init="open=true">name = {{name()}}</pre>
+  </div>
+
+  <div ng-controller="pluralizeCtrl">
+    Person 1:<input type="text" ng-model="person1" value="Igor" /><br/>
+    Person 2:<input type="text" ng-model="person2" value="Misko" /><br/>
+    Person 3:<input type="text" ng-model="person3" value="Rick" /><br/>
+    Number of People:<input type="text" ng-model="personCount" value="1" /><br/>
+
+    <!--- Example with simple pluralization rules for en locale --->
+    Without Offset:
+    <ng-pluralize count="personCount"
+                  when="{'0': 'Nobody is viewing.',
+                       'one': '1 person is viewing.',
+                       'other': '{} people are viewing.'}">
+    </ng-pluralize><br>
+
+    <!--- Example with offset --->
+    With Offset(3):
+    <ng-pluralize count="personCount" offset=3
+                  when="{'0': 'Nobody is viewing.',
+                       '1': '{{person1}} is viewing.',
+                       '2': '{{person1}} and {{person2}} are viewing.',
+                       '3': '{{person1}} and {{person2}} and {{person3}} are viewing.',
+                       'one': '{{person1}}, {{person2}} and {{person3}} and one other person are viewing.',
+                       'other': '{{person1}}, {{person2}} and {{person3}} and {} other people are viewing.'}">
+    </ng-pluralize>
+  </div>
 
   <script src="lib/angular.js"></script>
   <script src="js/common/data.js"></script>
